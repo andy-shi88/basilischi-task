@@ -38,31 +38,32 @@ class Main extends Component{
   onPostSelected(rowData) {
     this.props.navigator.push({
       id: 'Post',
-      rowData: rowData
+      post: rowData
     });
   }
-
+  renderRow(rowData, sectionId, rowId) {
+    return (
+      <TouchableHighlight
+        key={rowId}
+        data={rowData}
+        underlayColor="#cccccc"
+        onPress={this.onPostSelected.bind(this, rowData)}
+        style={styles.PostMenu}>
+          <Text
+            style={styles.postTitle}>
+            {rowData.title}
+          </Text>
+      </TouchableHighlight>
+    );
+  }
   //render
   render() {
-    // console.log(this.state.posts[0].userId);
     return(
       <View style={styles.container}>
         <View style={styles.PostList}>
           <ListView
             dataSource={this.state.posts}
-            renderRow={(rowData, sectionId, rowId)=>
-                        <TouchableHighlight
-                          key={rowId}
-                          data={rowData}
-                          underlayColor="#cccccc"
-                          onPress={this.onPostSelected.bind(this, rowData)}
-                          style={styles.PostMenu}>
-                            <Text
-                              style={styles.postTitle}>
-                              {rowData.title}
-                            </Text>
-                        </TouchableHighlight>
-                      }
+            renderRow={this.renderRow.bind(this)}
           />
         </View>
         <TouchableHighlight onPress={this.onButtonPress.bind(this)} style={styles.button}>

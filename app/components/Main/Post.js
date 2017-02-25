@@ -8,20 +8,19 @@ import {StyleSheet,
 //variables for post size
 let PostWidth = Dimensions.get('window').width; //100% of window width
 let PostHeight= Dimensions.get('window').height / 10; //10% of window height
-
+var api = require('../api/JsonPlaceHolder');
 /*
 * @class: Containing every information for one post, including display format
 */
 class Post extends Component {
-  //constructor: taking properties passed from jsonplaceholder
+  //constructor: taking properties passed from Main.js
   constructor(props) {
     super(props);
-    let rd = JSON.parse(this.props.rowData);
     this.state = { //storing the properties of the post
-      id: rd.id,
-      userId: rd.userId,
-      title: rd.title,
-      body: rd.body
+      id: this.props.post.id,
+      userId: this.props.post.userId,
+      title: this.props.post.title,
+      body: this.props.post.body
     };
   }
   //event listener
@@ -36,17 +35,17 @@ class Post extends Component {
     return(
         <View style={styles.container}>
           <View style={styles.head}>
-            <Text style={styles.idText}>Title: {this.state.title}</Text>
-            <Text style={styles.userIdText}>User id: {this.state.userId}</Text>
+            <Text style={styles.titleText}>Title: {this.state.title}</Text>
+
           </View>
           <View style={styles.body}>
             <Text style={styles.bodyText}>{this.state.body}</Text>
           </View>
           <View style={styles.menu}>
-            <TouchableHighlight underlayColor='#ccaadd' onPress={this.btEdit} style={styles.btEdit}>
+            <TouchableHighlight underlayColor='#888888' onPress={this.btEdit} style={styles.btEdit}>
               <Text style={styles.buttonText}> Edit </Text>
             </TouchableHighlight>
-            <TouchableHighlight underlayColor='#ccaadd' onPress={this.btDelete} style={styles.btDelete}>
+            <TouchableHighlight underlayColor='#888888' onPress={this.btDelete} style={styles.btDelete}>
               <Text style={styles.buttonText}> Delete </Text>
             </TouchableHighlight>
           </View>
@@ -63,37 +62,41 @@ const styles = StyleSheet.create({
     paddingBottom: 30
   },
   head: {
-    height: 20,
+    height: 70,
     flexDirection: 'row'
   },
-  idText: {
-    fontSize: 24,
-    flex: 1
-  },
-  userIdText: {
-    fontSize: 24,
-    flex:1
+  titleText: {
+    fontSize: 20,
+    flex: 1,
+    alignItems: 'center',
+    alignSelf: 'center',
+    fontWeight: 'bold'
   },
   menu:{
     flexDirection: 'row',
     height: 20
   },
   body: {
-    borderWidth: 2,
-    borderRadius: 2,
-    borderColor: '#456789',
-    fontSize: 30
+    paddingBottom: 10,
+    marginBottom: 40
+  },
+  bodyText: {
+    fontSize: 32
   },
   btEdit: {
     flex:1,
-    width: 10,
+    height: 50,
+    marginRight: 1,
+    backgroundColor: '#aaaaaa',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'stretch'
   },
   btDelete: {
     flex: 1,
-    width: 10,
+    height: 50,
+    marginLeft: 1,
+    backgroundColor: '#aaaaaa',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'stretch'

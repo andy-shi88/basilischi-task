@@ -31,7 +31,7 @@ export default class BasilischiTask extends Component {
         return (<CreatePost navigator={navigator} title='Create Post' />)
         break;
       case 'Post':
-        return (<Post navigator={navigator} title='Post' rowData={route.rowData}/>)
+        return (<Post navigator={navigator} title='Post' post={route.post}/>)
         break;
       default:
         break;
