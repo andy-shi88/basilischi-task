@@ -30,6 +30,9 @@ class Post extends Component {
   btDelete() {
 
   }
+  btBack() {
+    
+  }
   //render
   render() {
     return(
@@ -42,12 +45,17 @@ class Post extends Component {
             <Text style={styles.bodyText}>{this.state.body}</Text>
           </View>
           <View style={styles.menu}>
-            <TouchableHighlight underlayColor='#888888' onPress={this.btEdit} style={styles.btEdit}>
+            <TouchableHighlight underlayColor='#888888' onPress={this.btEdit} style={styles.button}>
               <Text style={styles.buttonText}> Edit </Text>
             </TouchableHighlight>
-            <TouchableHighlight underlayColor='#888888' onPress={this.btDelete} style={styles.btDelete}>
+            <TouchableHighlight underlayColor='#888888' onPress={this.btDelete} style={styles.button}>
               <Text style={styles.buttonText}> Delete </Text>
             </TouchableHighlight>
+          </View>
+          <View style={styles.menu}>
+          <TouchableHighlight underlayColor='#888888' onPress={this.btBack} style={styles.button}>
+            <Text style={styles.buttonText}>Back</Text>
+          </TouchableHighlight>
           </View>
         </View>
     );
@@ -74,7 +82,8 @@ const styles = StyleSheet.create({
   },
   menu:{
     flexDirection: 'row',
-    height: 20
+    height: 50,
+    marginBottom: 1
   },
   body: {
     paddingBottom: 10,
@@ -83,19 +92,10 @@ const styles = StyleSheet.create({
   bodyText: {
     fontSize: 32
   },
-  btEdit: {
+  button: {
     flex:1,
     height: 50,
     marginRight: 1,
-    backgroundColor: '#aaaaaa',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'stretch'
-  },
-  btDelete: {
-    flex: 1,
-    height: 50,
-    marginLeft: 1,
     backgroundColor: '#aaaaaa',
     justifyContent: 'center',
     alignItems: 'center',
