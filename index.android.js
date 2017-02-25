@@ -1,48 +1,43 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, {Component} from 'react';
+import {AppRegistry,
+        Text,
+        View,
+        Navigator} from 'react-native';
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image
-} from 'react-native';
+var Main = require('./app/components/Main/Main');
+var CreatePost = require('./app/components/Main/CreatePost');
+var Post = require('./app/components/Main/Post');
 
 export default class BasilischiTask extends Component {
   render() {
     return (
-      <View style={styles.container}>
-         <Image source={require('./test.jpg')} style={{width: 400, height: 300}}/>
-        <Text style={styles.welcome}>
-          Andy Herman - basilischi_batch
-        </Text>
-      </View>
+      <Navigator
+        initialRoute = {{
+          id:'Main'
+        }}
+        renderScene={
+          this.navigatorRenderScene
+        }
+      />
     );
   }
-}
+  navigatorRenderScene(route, navigator) {
+    _navigator = navigator;
+    switch (route.id) {
+      case 'Main':
+        return (<Main navigator={navigator} title='Main' />)
+        break;
+      case 'CreatePost':
+        return (<CreatePost navigator={navigator} title='Create Post' />)
+        break;
+      case 'Post':
+        return (<Post navigator={navigator} title='Post' rowData={route.rowData}/>)
+        break;
+      default:
+        break;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+    }
+  }
+}
 
 AppRegistry.registerComponent('BasilischiTask', () => BasilischiTask);
