@@ -17,15 +17,12 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = { //storing the properties of the post
-      id: this.props.post.id,
-      userId: this.props.post.userId,
-      title: this.props.post.title,
-      body: this.props.post.body
+      post: this.props.post
     };
   }
   //event listener
   btEdit() {
-
+    console.log(this.state.post.id);
   }
   btDelete() {
 
@@ -40,17 +37,17 @@ class Post extends Component {
     return(
         <View style={styles.container}>
           <View style={styles.head}>
-            <Text style={styles.titleText}>Title: {this.state.title}</Text>
+            <Text style={styles.titleText}>Title: {this.state.post.title}</Text>
 
           </View>
           <View style={styles.body}>
-            <Text style={styles.bodyText}>{this.state.body}</Text>
+            <Text style={styles.bodyText}>{this.state.post.body}</Text>
           </View>
           <View style={styles.menu}>
-            <TouchableHighlight underlayColor='#888888' onPress={this.btEdit} style={styles.button}>
+            <TouchableHighlight underlayColor='#888888' onPress={this.btEdit.bind(this)} style={styles.button}>
               <Text style={styles.buttonText}> Edit </Text>
             </TouchableHighlight>
-            <TouchableHighlight underlayColor='#888888' onPress={this.btDelete} style={styles.button}>
+            <TouchableHighlight underlayColor='#888888' onPress={this.btDelete.bind(this)} style={styles.button}>
               <Text style={styles.buttonText}> Delete </Text>
             </TouchableHighlight>
           </View>
