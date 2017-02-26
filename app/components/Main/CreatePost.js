@@ -33,6 +33,7 @@ class CreatePost extends Component {
                   'Content have been posted!',
                     [{text: 'OK', onPress: () => console.log('OK Pressed')}],
                     { cancelable: false } );
+    this.props.functions.updatePostsState();
     this.props.navigator.pop(0);
   }
   cancelPost() {

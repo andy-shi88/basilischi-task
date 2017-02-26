@@ -26,7 +26,8 @@ class Post extends Component {
     // console.log(this.state.post.id);
     this.props.navigator.push({
       id: 'EditPost',
-      post: this.state.post
+      post: this.state.post,
+      functions: this.props.functions
     });
   }
   btDelete() {
@@ -35,6 +36,7 @@ class Post extends Component {
                   'Post deleted!',
                   [{text: 'OK', onPress: () => console.log('OK Pressed')}],
                   { cancelable: false });
+    this.props.functions.updatePostsState();
     this.props.navigator.pop(0);
   }
   btBack() {

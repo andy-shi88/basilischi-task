@@ -19,6 +19,14 @@ class Main extends Component{
       posts: ds
     };
   }
+  updatePostsState(){
+    //fetch all data into the state
+    api.getPosts().then((res)=>{
+      this.setState({
+        posts: ds.cloneWithRows(res)
+      });
+    })
+  }
   //lifecycle configuration
   componentWillMount() {
     //fetch all data into the state
@@ -32,13 +40,15 @@ class Main extends Component{
   onButtonPress() {
     //console.log(this.state.postName);
     this.props.navigator.push({
-      id: 'CreatePost'
+      id: 'CreatePost',
+      functions: this
     });
   }
   onPostSelected(rowData) {
     this.props.navigator.push({
       id: 'Post',
-      post: rowData
+      post: rowData,
+      functions: this
     });
   }
   renderRow(rowData, sectionId, rowId) {

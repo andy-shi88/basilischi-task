@@ -33,6 +33,7 @@ class EditPost extends Component {
                   'Content have been updated!',
                     [{text: 'OK', onPress: () => console.log('OK Pressed')}],
                     { cancelable: false } );
+    this.props.functions.updatePostsState();
     this.props.navigator.popN(2); //go back 2 scene (to main scene)
   }
   cancelEdit() {

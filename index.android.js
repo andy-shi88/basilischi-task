@@ -29,13 +29,13 @@ export default class BasilischiTask extends Component {
         return (<Main navigator={navigator} title='Main' />)
         break;
       case 'CreatePost':
-        return (<CreatePost navigator={navigator} title='Create Post' />)
+        return (<CreatePost navigator={navigator} functions={route.functions} title='Create Post' />)
         break;
       case 'Post':
-        return (<Post navigator={navigator} title='Post' post={route.post}/>)
+        return (<Post navigator={navigator} title='Post' functions={route.functions} post={route.post}/>)
         break;
       case 'EditPost':
-        return (<EditPost navigator={navigator} title='Edit Post' post={route.post}/>)
+        return (<EditPost navigator={navigator} functions={route.functions} title='Edit Post' post={route.post}/>)
         break;
       default:
         break;
