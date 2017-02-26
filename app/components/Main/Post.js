@@ -22,10 +22,14 @@ class Post extends Component {
   }
   //event listener
   btEdit() {
-    console.log(this.state.post.id);
+    // console.log(this.state.post.id);
+    this.props.navigator.push({
+      id: 'EditPost',
+      post: this.state.post
+    });
   }
   btDelete() {
-
+    api.deletePost(this.state.post);
   }
   btBack() {
     this.props.navigator.pop({
