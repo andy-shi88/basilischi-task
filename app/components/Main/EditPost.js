@@ -18,12 +18,17 @@ class EditPost extends Component {
       postId: this.props.post.id,
       postUserId: this.props.post.userId,
       postTitle: this.props.post.title,
-      postBody: this.props.post.body,
-      post: this.props.post
+      postBody: this.props.post.body
     };
   }
   savePost() {
-    api.updatePost(this.state.post);
+    let post = {
+      id: this.state.postId,
+      userId: this.state.postUserId,
+      title: this.state.postTitle,
+      body: this.state.postBody,
+    }
+    api.updatePost(post);
     Alert.alert( 'Status',
                   'Content have been updated!',
                     [{text: 'OK', onPress: () => console.log('OK Pressed')}],

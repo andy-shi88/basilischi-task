@@ -1,5 +1,5 @@
 let api = {
-  url: 'https://jsonplaceholder.typicode.com/posts',
+  url: 'http://10.0.2.2:3000/posts',
   getPosts() {
     return fetch(this.url, {method: 'GET', mode: 'cors'}).then((res) => res.json());
   },
@@ -11,7 +11,7 @@ let api = {
   updatePost(rowData) {
     fetch(this.url + '/' + rowData.id,
           {method: 'PUT',
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json'},
           body: JSON.stringify({
             title: rowData.title,
             body: rowData.body
@@ -24,7 +24,7 @@ let api = {
   createPost(rowData) {
     fetch(this.url + '/' + rowData.id,
           {method: 'POST',
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json'},
           body: JSON.stringify({
             id: rowData.id,
             userId: rowData.userId,
