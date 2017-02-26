@@ -11,6 +11,7 @@ let api = {
   updatePost(rowData) {
     fetch(this.url + '/' + rowData.id,
           {method: 'PUT',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           body: JSON.stringify({
             title: rowData.title,
             body: rowData.body
@@ -23,6 +24,7 @@ let api = {
   createPost(rowData) {
     fetch(this.url + '/' + rowData.id,
           {method: 'POST',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           body: JSON.stringify({
             id: rowData.id,
             userId: rowData.userId,

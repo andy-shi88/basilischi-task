@@ -29,7 +29,7 @@ class CreatePost extends Component {
       body: this.state.postBody
     }
     api.createPost(post);
-    Alert.alert( 'Status',
+    Alert.alert( 'Status' + this.state.postBody,
                   'Content have been posted!',
                     [{text: 'OK', onPress: () => console.log('OK Pressed')}],
                     { cancelable: false } );
@@ -44,6 +44,7 @@ class CreatePost extends Component {
         <TextInput
           placeholder="Title"
           style={styles.titleInput}
+          onChangeText={(text) => this.setState({postTitle: text})}
           multiline={true}>
           {this.state.postTitle}
         </TextInput>

@@ -38,7 +38,8 @@ class EditPost extends Component {
       <View style={styles.container}>
         <TextInput
           style={styles.titleInput}
-          multiline={true}>
+          multiline={true}
+          onChangeText={(text) => this.setState({postTitle: text})}>
           {this.state.postTitle}
         </TextInput>
         <TextInput
