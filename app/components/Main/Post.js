@@ -31,7 +31,9 @@ class Post extends Component {
 
   }
   btBack() {
-    
+    this.props.navigator.pop({
+      id: 'Post'
+    });
   }
   //render
   render() {
@@ -53,7 +55,7 @@ class Post extends Component {
             </TouchableHighlight>
           </View>
           <View style={styles.menu}>
-          <TouchableHighlight underlayColor='#888888' onPress={this.btBack} style={styles.button}>
+          <TouchableHighlight underlayColor='#888888' onPress={this.btBack.bind(this)} style={styles.button}>
             <Text style={styles.buttonText}>Back</Text>
           </TouchableHighlight>
           </View>
