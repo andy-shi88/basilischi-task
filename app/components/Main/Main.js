@@ -67,7 +67,7 @@ class Main extends Component{
           />
         </View>
         <TouchableHighlight onPress={this.onButtonPress.bind(this)} style={styles.button}>
-          <Text style={styles.buttonText}>{this.state.postName}</Text>
+          <Text style={styles.buttonText}>Create Post</Text>
         </TouchableHighlight>
       </View>
     );
