@@ -4,9 +4,13 @@ import {StyleSheet,
         TextInput,
         Text,
         TouchableHighlight,
-        Dimensions
+        Dimensions,
+        Alert
       } from 'react-native';
+
 let windowWidth = Dimensions.get('window').width;
+let api = require('../api/JsonPlaceHolder');
+
 class EditPost extends Component {
   constructor(props) {
     super(props);
@@ -14,16 +18,20 @@ class EditPost extends Component {
       postId: this.props.post.id,
       postUserId: this.props.post.userId,
       postTitle: this.props.post.title,
-      postBody: this.props.post.body
+      postBody: this.props.post.body,
+      post: this.props.post
     };
   }
   savePost() {
-
+    api.updatePost(this.state.post);
+    Alert.alert( 'Status',
+                  'Content have been updated!',
+                    [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+                    { cancelable: false } );
+    this.props.navigator.popN(2); //go back 2 scene (to main scene)
   }
   cancelEdit() {
-    this.props.navigator.pop({
-      id: 'EditPost'
-    });
+    this.props.navigator.popN(2);//go back 2 scene (to main scene)
   }
   render() {
     return (

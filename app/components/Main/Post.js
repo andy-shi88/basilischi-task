@@ -3,7 +3,8 @@ import {StyleSheet,
         View,
         Text,
         TouchableHighlight,
-        Dimensions
+        Dimensions,
+        Alert
       } from 'react-native';
 //variables for post size
 let PostWidth = Dimensions.get('window').width; //100% of window width
@@ -30,6 +31,11 @@ class Post extends Component {
   }
   btDelete() {
     api.deletePost(this.state.post);
+    Alert.alert( 'Status',
+                  'Post deleted!',
+                  [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+                  { cancelable: false });
+    this.props.navigator.pop(0);
   }
   btBack() {
     this.props.navigator.pop({

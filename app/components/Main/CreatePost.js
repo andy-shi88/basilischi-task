@@ -4,10 +4,12 @@ import {StyleSheet,
         TextInput,
         Text,
         TouchableHighlight,
-        Dimensions
+        Dimensions,
+        Alert
       } from 'react-native';
 
 let windowWidth = Dimensions.get('window').width;
+let api = require('../api/JsonPlaceHolder');
 
 class CreatePost extends Component {
   constructor(props) {
@@ -20,22 +22,33 @@ class CreatePost extends Component {
     };
   }
   savePost() {
-
+    let post = {
+      id: this.state.postId,
+      userId: this.state.postUserId,
+      title: this.state.postTitle,
+      body: this.state.postBody
+    }
+    api.createPost(post);
+    Alert.alert( 'Status',
+                  'Content have been posted!',
+                    [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+                    { cancelable: false } );
+    this.props.navigator.pop(0);
   }
   cancelPost() {
-    this.props.navigator.pop({
-      id: 'CreatePost'
-    });
+    this.props.navigator.pop(0);
   }
   render() {
     return (
       <View style={styles.container}>
         <TextInput
+          placeholder="Title"
           style={styles.titleInput}
           multiline={true}>
           {this.state.postTitle}
         </TextInput>
         <TextInput
+            placeholder="Content"
            style={styles.bodyInput}
            onChangeText={(text) => this.setState({postBody: text})}
            value={this.state.postBody}
