@@ -8,6 +8,7 @@ var Main = require('./app/components/Main/Main');
 var CreatePost = require('./app/components/Main/CreatePost');
 var Post = require('./app/components/Main/Post');
 var EditPost = require('./app/components/Main/EditPost');
+var Task1 = require('./app/components/Main/Task1');
 
 export default class BasilischiTask extends Component {
   render() {
@@ -36,6 +37,9 @@ export default class BasilischiTask extends Component {
         break;
       case 'EditPost':
         return (<EditPost navigator={navigator} functions={route.functions} title='Edit Post' post={route.post}/>)
+        break;
+      case 'Task1':
+        return (<Task1 navigator={navigator} title='Task 1' />)
         break;
       default:
         break;

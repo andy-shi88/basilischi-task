@@ -44,6 +44,12 @@ class Main extends Component{
       functions: this
     });
   }
+  ViewTask1() {
+    //console.log(this.state.postName);
+    this.props.navigator.push({
+      id: 'Task1'
+    });
+  }
   onPostSelected(rowData) {
     this.props.navigator.push({
       id: 'Post',
@@ -79,6 +85,9 @@ class Main extends Component{
         <TouchableHighlight onPress={this.onButtonPress.bind(this)} style={styles.button}>
           <Text style={styles.buttonText}>Create Post</Text>
         </TouchableHighlight>
+        <TouchableHighlight onPress={this.ViewTask1.bind(this)} style={styles.button}>
+          <Text style={styles.buttonText}>View Task 1</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -104,7 +113,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   PostList: {
-    flex: 2,
+    flex: 3,
     paddingTop: 40,
     paddingRight: 20,
     paddingLeft: 20
@@ -114,7 +123,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'stretch',
-    backgroundColor: '#3fb0ac'
+    backgroundColor: '#3fb0ac',
+    marginTop: 2
   },
   buttonText: {
     color: '#fae596'
