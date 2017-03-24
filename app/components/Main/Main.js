@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
     marginTop: 2
   },
   buttonText: {
+    fontSize: 30,
     color: '#fae596'
   }
 });
